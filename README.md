@@ -3,7 +3,7 @@
 Senior Backend Software Engineer | Java • Spring Boot • Microservices
 
 ## Live Demo
-https://YOUR-USERNAME.github.io/portfolio
+https://wajihaKhan.github.io/portfolio
 
 ## Tech Stack
 - HTML5, CSS3, Vanilla JavaScript
