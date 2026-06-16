@@ -8,16 +8,12 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; color: #e2e8f0; background: #0f172a; }
-
-        /* ── Header ── */
         header { background: #1e2937; padding: 1.2rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #334155; }
         nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         nav h1 { color: #60a5fa; font-size: 1.6rem; }
         nav ul { display: flex; list-style: none; gap: 1.6rem; flex-wrap: wrap; }
         nav a { color: #e2e8f0; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
         nav a:hover { color: #60a5fa; }
-
-        /* ── Hero ── */
         #hero { background: linear-gradient(135deg, #1e3a8a 0%, #1e2937 60%, #0f172a 100%); text-align: center; padding: 7rem 5% 5rem; }
         #hero h2 { font-size: 2.6rem; color: #f1f5f9; margin-bottom: 0.8rem; }
         #hero .sub { color: #93c5fd; font-size: 1.1rem; margin-bottom: 0.5rem; }
@@ -30,22 +26,16 @@
         .primary:hover { background: #2563eb; border-color: #2563eb; }
         .secondary { background: transparent; color: white; border: 2px solid #475569; }
         .secondary:hover { border-color: #60a5fa; color: #60a5fa; }
-
-        /* ── Sections ── */
         section { max-width: 1100px; margin: 5rem auto; padding: 0 5%; }
         h2.section-title { color: #60a5fa; margin-bottom: 2.5rem; text-align: center; font-size: 2rem; position: relative; }
         h2.section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #3b82f6; margin: 10px auto 0; border-radius: 2px; }
-
-        /* ── About ── */
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
         .about-card { background: #1e2937; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
         .about-card h3 { color: #93c5fd; font-size: 1rem; margin-bottom: 0.8rem; }
         .about-card p, .about-card li { color: #94a3b8; font-size: 0.95rem; }
         .about-card ul { list-style: none; }
         .about-card li::before { content: '✓ '; color: #3b82f6; }
-
-        /* ── Experience ── */
-        .exp-card { background: #1e2937; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; position: relative; }
+        .exp-card { background: #1e2937; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; }
         .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
         .exp-title { font-size: 1.1rem; font-weight: 600; color: #f1f5f9; }
         .exp-date { color: #60a5fa; font-size: 0.85rem; background: #1e3a8a; padding: 3px 10px; border-radius: 12px; white-space: nowrap; }
@@ -53,8 +43,6 @@
         .exp-card ul { list-style: none; }
         .exp-card li { color: #94a3b8; font-size: 0.92rem; padding: 3px 0 3px 16px; position: relative; }
         .exp-card li::before { content: '→'; position: absolute; left: 0; color: #3b82f6; }
-
-        /* ── Projects ── */
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
         .project-card { background: #1e2937; border-radius: 14px; border: 1px solid #334155; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
         .project-card:hover { transform: translateY(-3px); border-color: #3b82f6; }
@@ -63,6 +51,7 @@
         .project-icon { font-size: 2rem; margin-bottom: 0.5rem; }
         .project-name { font-size: 1.1rem; font-weight: 600; color: #f1f5f9; margin-bottom: 0.3rem; }
         .project-live { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; color: #4ade80; background: #052e16; padding: 2px 8px; border-radius: 10px; margin-bottom: 0.5rem; }
+        .project-coming { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; color: #fbbf24; background: #1c1408; padding: 2px 8px; border-radius: 10px; margin-bottom: 0.5rem; }
         .project-tech { color: #60a5fa; font-size: 0.8rem; margin-bottom: 0.8rem; }
         .project-body { padding: 0 1.5rem 1rem; flex: 1; }
         .project-body p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
@@ -75,36 +64,31 @@
         .btn-sm:hover { border-color: #60a5fa; color: #60a5fa; }
         .btn-sm.live { background: #1e3a8a; border-color: #3b82f6; color: #93c5fd; }
         .btn-sm.live:hover { background: #1d4ed8; }
-
-        /* ── Skills ── */
+        /* inline sentiment demo */
+        .demo-box { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 1rem; margin-top: 0.8rem; }
+        .demo-box textarea { width: 100%; background: #1e2937; border: 1px solid #334155; border-radius: 6px; color: #e2e8f0; padding: 8px 10px; font-size: 0.85rem; resize: vertical; min-height: 60px; font-family: inherit; }
+        .demo-box textarea:focus { outline: none; border-color: #3b82f6; }
+        .demo-btn { margin-top: 8px; padding: 7px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 0.82rem; cursor: pointer; font-family: inherit; }
+        .demo-btn:hover { background: #2563eb; }
+        .demo-result { margin-top: 8px; font-size: 0.85rem; display: none; }
         .skills-group { margin-bottom: 2rem; }
         .skills-group h3 { color: #93c5fd; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
         .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
         .skill-tag { background: #1e2937; border: 1px solid #334155; color: #e2e8f0; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; }
         .skill-tag.highlight { border-color: #3b82f6; color: #93c5fd; }
-
-        /* ── Contact ── */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
         .contact-item { background: #1e2937; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #e2e8f0; transition: border-color 0.2s; }
         .contact-item:hover { border-color: #60a5fa; }
         .contact-item i { color: #60a5fa; font-size: 1.3rem; width: 24px; }
         .contact-item .contact-label { font-size: 0.75rem; color: #64748b; }
         .contact-item .contact-val { font-size: 0.9rem; }
-
-        /* ── Footer ── */
         footer { text-align: center; padding: 2.5rem; background: #1e2937; color: #475569; margin-top: 3rem; font-size: 0.9rem; border-top: 1px solid #334155; }
         footer a { color: #60a5fa; text-decoration: none; }
-
         html { scroll-behavior: smooth; }
-
-        @media (max-width: 600px) {
-            #hero h2 { font-size: 1.8rem; }
-            .about-grid { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 600px) { #hero h2 { font-size: 1.8rem; } .about-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
 <header>
     <nav>
         <h1>Wajiha Khan</h1>
@@ -118,7 +102,6 @@
     </nav>
 </header>
 
-<!-- ── Hero ── -->
 <section id="hero">
     <h2>Senior Backend Software Engineer</h2>
     <p class="sub">Java · Spring Boot · Microservices · Fintech & Enterprise SaaS</p>
@@ -138,7 +121,6 @@
     </div>
 </section>
 
-<!-- ── About ── -->
 <section id="about">
     <h2 class="section-title">About Me</h2>
     <div class="about-grid">
@@ -160,10 +142,8 @@
     </div>
 </section>
 
-<!-- ── Experience ── -->
 <section id="experience">
     <h2 class="section-title">Experience</h2>
-
     <div class="exp-card">
         <div class="exp-header">
             <div>
@@ -180,7 +160,6 @@
             <li>Mentored junior engineers through structured code reviews, raising team engineering standards.</li>
         </ul>
     </div>
-
     <div class="exp-card">
         <div class="exp-header">
             <div>
@@ -198,7 +177,6 @@
     </div>
 </section>
 
-<!-- ── Projects ── -->
 <section id="projects">
     <h2 class="section-title">Live Projects</h2>
     <div class="projects-grid">
@@ -219,7 +197,7 @@
                     <div class="metric"><div class="metric-val">30s</div><div class="metric-label">dispatch cycle</div></div>
                     <div class="metric"><div class="metric-val">85%+</div><div class="metric-label">test coverage</div></div>
                 </div>
-                <p>Built with event-driven retry logic — failed jobs are re-scored with urgency boost and automatically re-queued. Full REST API with Swagger UI documentation.</p>
+                <p>Built with event-driven retry logic — failed jobs are re-scored with urgency boost and automatically re-queued.</p>
             </div>
             <div class="project-footer">
                 <a href="https://smart-job-scheduler-production.up.railway.app/swagger-ui/index.html" target="_blank" class="btn-sm live"><i class="fas fa-external-link-alt"></i> Live Demo</a>
@@ -233,21 +211,26 @@
             <div class="project-header">
                 <div class="project-icon">💬</div>
                 <div class="project-name">AI Sentiment Analyzer</div>
-                <div class="project-live"><i class="fas fa-circle" style="font-size:0.5rem"></i> Open Source</div>
-                <div class="project-tech">Java 21 · Spring Boot 3.3 · Thymeleaf · Rule-Based AI · Maven</div>
+                <div class="project-live"><i class="fas fa-circle" style="font-size:0.5rem"></i> Live in Production</div>
+                <div class="project-tech">Java 21 · Spring Boot 3.3 · Thymeleaf · Rule-Based AI · Maven · Railway</div>
             </div>
             <div class="project-body">
-                <p>Full-stack AI-powered sentiment analysis tool that classifies any text as Positive, Negative, or Neutral with confidence scoring. Built with a rule-based AI engine — no external API dependency, fully self-contained and deterministic.</p>
+                <p>Full-stack AI-powered sentiment analysis tool that classifies any text as Positive, Negative, or Neutral with confidence scoring. No external API dependency — fully self-contained, deterministic, and production-safe.</p>
                 <div class="project-metrics">
                     <div class="metric"><div class="metric-val">3</div><div class="metric-label">sentiment classes</div></div>
                     <div class="metric"><div class="metric-val">0%</div><div class="metric-label">API dependency</div></div>
                     <div class="metric"><div class="metric-val">Real-time</div><div class="metric-label">analysis</div></div>
                 </div>
-                <p>Demonstrates the same explainable AI philosophy as the Job Scheduler — rule-based models that are transparent, auditable, and production-safe.</p>
+                <!-- Inline demo -->
+                <div class="demo-box">
+                    <textarea id="demo-text" placeholder="Type any text and click Analyse...">I absolutely love working with Java and Spring Boot!</textarea>
+                    <button class="demo-btn" onclick="analyseSentiment()">✨ Analyse Sentiment</button>
+                    <div class="demo-result" id="demo-result"></div>
+                </div>
             </div>
             <div class="project-footer">
+                <a href="sentiment-analyzer-production-395b.up.railway.app" target="_blank" class="btn-sm live" id="sentiment-live-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                 <a href="https://github.com/wajihayousafzai1-debug/sentiment-analyzer" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Source Code</a>
-                <a href="https://github.com/wajihayousafzai1-debug/sentiment-analyzer/blob/main/README.md" target="_blank" class="btn-sm"><i class="fas fa-book"></i> README</a>
             </div>
         </div>
 
@@ -288,62 +271,33 @@
                 <span class="btn-sm" style="color:#64748b;cursor:default"><i class="fas fa-university"></i> Academic Project</span>
             </div>
         </div>
-
     </div>
 </section>
 
-<!-- ── Skills ── -->
 <section id="skills">
     <h2 class="section-title">Skills</h2>
     <div class="skills-group">
         <h3>Languages & Frameworks</h3>
         <div class="skills-wrap">
-            <span class="skill-tag highlight">Java 17/21</span>
-            <span class="skill-tag highlight">Spring Boot 3.x</span>
-            <span class="skill-tag highlight">Spring Batch</span>
-            <span class="skill-tag highlight">Spring Reactor</span>
-            <span class="skill-tag">Hibernate</span>
-            <span class="skill-tag">Python</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">React.js</span>
-            <span class="skill-tag">Groovy</span>
+            <span class="skill-tag highlight">Java 17/21</span><span class="skill-tag highlight">Spring Boot 3.x</span><span class="skill-tag highlight">Spring Batch</span><span class="skill-tag highlight">Spring Reactor</span><span class="skill-tag">Hibernate</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React.js</span><span class="skill-tag">Groovy</span>
         </div>
     </div>
     <div class="skills-group">
         <h3>Backend & APIs</h3>
         <div class="skills-wrap">
-            <span class="skill-tag highlight">Microservices</span>
-            <span class="skill-tag highlight">RESTful APIs</span>
-            <span class="skill-tag highlight">Apache Kafka</span>
-            <span class="skill-tag highlight">RabbitMQ</span>
-            <span class="skill-tag">SOAP</span>
-            <span class="skill-tag">Event-Driven Architecture</span>
-            <span class="skill-tag">JWT</span>
-            <span class="skill-tag">Distributed Systems</span>
+            <span class="skill-tag highlight">Microservices</span><span class="skill-tag highlight">RESTful APIs</span><span class="skill-tag highlight">Apache Kafka</span><span class="skill-tag highlight">RabbitMQ</span><span class="skill-tag">SOAP</span><span class="skill-tag">Event-Driven Architecture</span><span class="skill-tag">JWT</span><span class="skill-tag">Distributed Systems</span>
         </div>
     </div>
     <div class="skills-group">
         <h3>Cloud & DevOps</h3>
         <div class="skills-wrap">
-            <span class="skill-tag highlight">Docker</span>
-            <span class="skill-tag highlight">Kubernetes</span>
-            <span class="skill-tag highlight">AWS</span>
-            <span class="skill-tag">Jenkins</span>
-            <span class="skill-tag">CI/CD Pipelines</span>
-            <span class="skill-tag">Helm</span>
-            <span class="skill-tag">Terraform</span>
-            <span class="skill-tag">Azure DevOps</span>
-            <span class="skill-tag">Oracle Cloud</span>
+            <span class="skill-tag highlight">Docker</span><span class="skill-tag highlight">Kubernetes</span><span class="skill-tag highlight">AWS</span><span class="skill-tag">Jenkins</span><span class="skill-tag">CI/CD Pipelines</span><span class="skill-tag">Helm</span><span class="skill-tag">Terraform</span><span class="skill-tag">Azure DevOps</span><span class="skill-tag">Oracle Cloud</span>
         </div>
     </div>
     <div class="skills-group">
         <h3>Databases</h3>
         <div class="skills-wrap">
-            <span class="skill-tag highlight">PostgreSQL</span>
-            <span class="skill-tag highlight">Oracle SQL</span>
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">MySQL</span>
-            <span class="skill-tag">Informix</span>
+            <span class="skill-tag highlight">PostgreSQL</span><span class="skill-tag highlight">Oracle SQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MySQL</span><span class="skill-tag">Informix</span>
         </div>
     </div>
     <div class="skills-group">
@@ -356,7 +310,6 @@
     </div>
 </section>
 
-<!-- ── Contact ── -->
 <section id="contact">
     <h2 class="section-title">Contact Me</h2>
     <div class="contact-grid">
@@ -383,5 +336,36 @@
     <p>© 2026 Wajiha Khan &nbsp;·&nbsp; Senior Backend Software Engineer &nbsp;·&nbsp; <a href="https://linkedin.com/in/wajiha-yousafzai">LinkedIn</a> &nbsp;·&nbsp; <a href="https://github.com/wajihayousafzai1-debug">GitHub</a></p>
 </footer>
 
+<script>
+// Inline sentiment demo — rule-based, mirrors your Java engine logic
+function analyseSentiment() {
+    const text = document.getElementById('demo-text').value.trim();
+    if (!text) return;
+
+    const positive = ['love','great','excellent','amazing','awesome','good','fantastic','happy','wonderful','best','brilliant','perfect','enjoy','beautiful','outstanding','superb'];
+    const negative = ['hate','terrible','awful','bad','horrible','worst','disappointing','ugly','boring','dreadful','poor','useless','broken','failed','error','wrong'];
+
+    const lower = text.toLowerCase();
+    let posScore = 0, negScore = 0;
+    positive.forEach(w => { if (lower.includes(w)) posScore++; });
+    negative.forEach(w => { if (lower.includes(w)) negScore++; });
+
+    let sentiment, emoji, color, confidence;
+    if (posScore > negScore) {
+        sentiment = 'Positive'; emoji = '😊'; color = '#4ade80';
+        confidence = Math.min(95, 60 + posScore * 10);
+    } else if (negScore > posScore) {
+        sentiment = 'Negative'; emoji = '😞'; color = '#f87171';
+        confidence = Math.min(95, 60 + negScore * 10);
+    } else {
+        sentiment = 'Neutral'; emoji = '😐'; color = '#fbbf24';
+        confidence = 55;
+    }
+
+    const result = document.getElementById('demo-result');
+    result.style.display = 'block';
+    result.innerHTML = `<span style="color:${color};font-weight:600">${emoji} ${sentiment}</span> &nbsp;·&nbsp; <span style="color:#64748b">Confidence: ${confidence}%</span><br><span style="color:#475569;font-size:0.8rem">Rule-based AI · ${posScore} positive signals · ${negScore} negative signals detected</span>`;
+}
+</script>
 </body>
 </html>
