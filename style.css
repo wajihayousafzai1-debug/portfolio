@@ -234,6 +234,8 @@
     .demo-card h3 { margin-top: 54px; font-size: clamp(1.5rem, 3vw, 2.2rem); }
     .demo-card p { max-width: 490px; margin-top: 15px; color: var(--text-muted); }
     .demo-url { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 30px; padding: 13px 15px; border: 1px solid var(--line); border-radius: 7px; background: var(--bg-elevated); color: var(--text-muted); font-family: var(--font-mono); font-size: .68rem; transition: border-color .2s, color .2s; }
+    .demo-url span { min-width: 0; overflow-wrap: anywhere; }
+    .demo-url b { flex: 0 0 auto; color: var(--text); font-family: var(--font-body); font-size: .72rem; }
     .demo-url:hover { border-color: var(--accent); color: var(--accent); }
     .demo-note { margin-top: 18px; color: var(--text-faint); font-size: .78rem; }
     .demo-note code { color: var(--text-muted); font-family: var(--font-mono); }
@@ -384,6 +386,7 @@
         .project-links { flex-direction: column; align-items: flex-start; gap: 14px; }
         .demo-card-head { flex-direction: column; gap: 8px; }
         .demo-card h3 { margin-top: 38px; }
+        .demo-url { align-items: flex-start; flex-direction: column; }
         .demo-advisory { grid-template-columns: 1fr; gap: 8px; }
         .expertise-grid { grid-template-columns: 1fr; }
         .expertise-card--primary { grid-column: auto; }
