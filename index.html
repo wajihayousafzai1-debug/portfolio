@@ -1,371 +1,312 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wajiha Khan | Senior Backend Engineer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; color: #e2e8f0; background: #0f172a; }
-        header { background: #1e2937; padding: 1.2rem 5%; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #334155; }
-        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        nav h1 { color: #60a5fa; font-size: 1.6rem; }
-        nav ul { display: flex; list-style: none; gap: 1.6rem; flex-wrap: wrap; }
-        nav a { color: #e2e8f0; text-decoration: none; font-size: 0.95rem; transition: color 0.2s; }
-        nav a:hover { color: #60a5fa; }
-        #hero { background: linear-gradient(135deg, #1e3a8a 0%, #1e2937 60%, #0f172a 100%); text-align: center; padding: 7rem 5% 5rem; }
-        #hero h2 { font-size: 2.6rem; color: #f1f5f9; margin-bottom: 0.8rem; }
-        #hero .sub { color: #93c5fd; font-size: 1.1rem; margin-bottom: 0.5rem; }
-        #hero .location { color: #64748b; font-size: 0.95rem; margin-bottom: 2.5rem; }
-        .badge-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-bottom: 2.5rem; }
-        .badge { background: #1e3a8a; color: #93c5fd; border: 1px solid #3b82f6; padding: 5px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 500; }
-        .cta-buttons { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; }
-        .primary { background: #3b82f6; color: white; border: 2px solid #3b82f6; }
-        .primary:hover { background: #2563eb; border-color: #2563eb; }
-        .secondary { background: transparent; color: white; border: 2px solid #475569; }
-        .secondary:hover { border-color: #60a5fa; color: #60a5fa; }
-        section { max-width: 1100px; margin: 5rem auto; padding: 0 5%; }
-        h2.section-title { color: #60a5fa; margin-bottom: 2.5rem; text-align: center; font-size: 2rem; position: relative; }
-        h2.section-title::after { content: ''; display: block; width: 50px; height: 3px; background: #3b82f6; margin: 10px auto 0; border-radius: 2px; }
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .about-card { background: #1e2937; border: 1px solid #334155; border-radius: 12px; padding: 1.5rem; }
-        .about-card h3 { color: #93c5fd; font-size: 1rem; margin-bottom: 0.8rem; }
-        .about-card p, .about-card li { color: #94a3b8; font-size: 0.95rem; }
-        .about-card ul { list-style: none; }
-        .about-card li::before { content: '✓ '; color: #3b82f6; }
-        .exp-card { background: #1e2937; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; border-left: 4px solid #3b82f6; }
-        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem; }
-        .exp-title { font-size: 1.1rem; font-weight: 600; color: #f1f5f9; }
-        .exp-date { color: #60a5fa; font-size: 0.85rem; background: #1e3a8a; padding: 3px 10px; border-radius: 12px; white-space: nowrap; }
-        .exp-company { color: #64748b; font-size: 0.9rem; margin-bottom: 1rem; }
-        .exp-card ul { list-style: none; }
-        .exp-card li { color: #94a3b8; font-size: 0.92rem; padding: 3px 0 3px 16px; position: relative; }
-        .exp-card li::before { content: '→'; position: absolute; left: 0; color: #3b82f6; }
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .project-card { background: #1e2937; border-radius: 14px; border: 1px solid #334155; overflow: hidden; display: flex; flex-direction: column; transition: transform 0.2s, border-color 0.2s; }
-        .project-card:hover { transform: translateY(-3px); border-color: #3b82f6; }
-        .project-card.featured { border-color: #1d4ed8; border-width: 2px; }
-        .project-header { padding: 1.5rem 1.5rem 0; }
-        .project-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-        .project-name { font-size: 1.1rem; font-weight: 600; color: #f1f5f9; margin-bottom: 0.3rem; }
-        .project-live { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; color: #4ade80; background: #052e16; padding: 2px 8px; border-radius: 10px; margin-bottom: 0.5rem; }
-        .project-coming { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; color: #fbbf24; background: #1c1408; padding: 2px 8px; border-radius: 10px; margin-bottom: 0.5rem; }
-        .project-tech { color: #60a5fa; font-size: 0.8rem; margin-bottom: 0.8rem; }
-        .project-body { padding: 0 1.5rem 1rem; flex: 1; }
-        .project-body p { color: #94a3b8; font-size: 0.9rem; line-height: 1.6; }
-        .project-metrics { display: flex; gap: 10px; flex-wrap: wrap; margin: 0.8rem 0; }
-        .metric { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 6px 12px; font-size: 0.8rem; }
-        .metric-val { color: #60a5fa; font-weight: 600; }
-        .metric-label { color: #64748b; font-size: 0.75rem; }
-        .project-footer { padding: 1rem 1.5rem; border-top: 1px solid #1e293b; display: flex; gap: 8px; flex-wrap: wrap; }
-        .btn-sm { padding: 7px 14px; font-size: 0.82rem; border-radius: 6px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: 1px solid #334155; color: #e2e8f0; transition: all 0.2s; }
-        .btn-sm:hover { border-color: #60a5fa; color: #60a5fa; }
-        .btn-sm.live { background: #1e3a8a; border-color: #3b82f6; color: #93c5fd; }
-        .btn-sm.live:hover { background: #1d4ed8; }
-        /* inline sentiment demo */
-        .demo-box { background: #0f172a; border: 1px solid #334155; border-radius: 10px; padding: 1rem; margin-top: 0.8rem; }
-        .demo-box textarea { width: 100%; background: #1e2937; border: 1px solid #334155; border-radius: 6px; color: #e2e8f0; padding: 8px 10px; font-size: 0.85rem; resize: vertical; min-height: 60px; font-family: inherit; }
-        .demo-box textarea:focus { outline: none; border-color: #3b82f6; }
-        .demo-btn { margin-top: 8px; padding: 7px 16px; background: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 0.82rem; cursor: pointer; font-family: inherit; }
-        .demo-btn:hover { background: #2563eb; }
-        .demo-result { margin-top: 8px; font-size: 0.85rem; display: none; }
-        .skills-group { margin-bottom: 2rem; }
-        .skills-group h3 { color: #93c5fd; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.8rem; }
-        .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-        .skill-tag { background: #1e2937; border: 1px solid #334155; color: #e2e8f0; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; }
-        .skill-tag.highlight { border-color: #3b82f6; color: #93c5fd; }
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
-        .contact-item { background: #1e2937; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 1rem; text-decoration: none; color: #e2e8f0; transition: border-color 0.2s; }
-        .contact-item:hover { border-color: #60a5fa; }
-        .contact-item i { color: #60a5fa; font-size: 1.3rem; width: 24px; }
-        .contact-item .contact-label { font-size: 0.75rem; color: #64748b; }
-        .contact-item .contact-val { font-size: 0.9rem; }
-        footer { text-align: center; padding: 2.5rem; background: #1e2937; color: #475569; margin-top: 3rem; font-size: 0.9rem; border-top: 1px solid #334155; }
-        footer a { color: #60a5fa; text-decoration: none; }
-        html { scroll-behavior: smooth; }
-        @media (max-width: 600px) { #hero h2 { font-size: 1.8rem; } .about-grid { grid-template-columns: 1fr; } }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wajiha Khan is a Senior Backend Engineer building reliable Java and Spring Boot systems for fintech, enterprise integrations, and high-volume workflows.">
+    <meta name="theme-color" content="#0a0c10">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wajiha Khan — Senior Backend Engineer">
+    <meta property="og:description" content="Backend engineering for payments, integrations, and high-volume workflows.">
+    <meta property="og:url" content="https://wajihayousafzai1-debug.github.io/portfolio/">
+    <meta name="twitter:card" content="summary">
+    <title>Wajiha Khan — Senior Backend Engineer</title>
+    <link rel="canonical" href="https://wajihayousafzai1-debug.github.io/portfolio/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script>
+        document.documentElement.classList.add('js');
+        document.documentElement.dataset.theme = localStorage.getItem('theme') ||
+            (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    </script>
+    <script src="script.js" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Wajiha Khan",
+      "jobTitle": "Senior Backend Engineer",
+      "url": "https://wajihayousafzai1-debug.github.io/portfolio/",
+      "sameAs": [
+        "https://github.com/wajihayousafzai1-debug",
+        "https://linkedin.com/in/wajiha-yousafzai"
+      ],
+      "knowsAbout": ["Java", "Spring Boot", "Distributed Systems", "PostgreSQL", "Fintech", "Enterprise Integrations"]
+    }
+    </script>
 </head>
 <body>
-<header>
-    <nav>
-        <h1>Wajiha Khan</h1>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-<section id="hero">
-    <h2>Senior Software Engineer</h2>
-    <p class="sub">Java · Spring Boot · Microservices · Fintech & Enterprise SaaS</p>
-    <p class="location"><i class="fas fa-map-marker-alt"></i> Lahore, Pakistan &nbsp;·&nbsp; Open to relocation </p>
-    <div class="badge-row">
-        <span class="badge">4+ Years Experience</span>
-        <span class="badge">Oracle Certified</span>
-        <span class="badge">Fintech Payments</span>
-        <span class="badge">Distributed Systems</span>
-        <span class="badge">Live Projects in Production</span>
-    </div>
-    <div class="cta-buttons">
-        <a href="#contact" class="btn primary"><i class="fas fa-envelope"></i> Get In Touch</a>
-        <a href="https://github.com/wajihayousafzai1-debug/portfolio/raw/main/Wajiha_Khan_Resume.pdf" target="_blank" class="btn secondary"><i class="fas fa-download"></i> Download CV</a>
-        <a href="https://linkedin.com/in/wajiha-yousafzai" target="_blank" class="btn secondary"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="https://github.com/wajihayousafzai1-debug" target="_blank" class="btn secondary"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-</section>
+    <header class="site-header" data-header>
+        <nav class="nav shell" aria-label="Primary navigation">
+            <a class="brand" href="#top" aria-label="Wajiha Khan, home">
+                <span class="brand-mark" aria-hidden="true">WK</span>
+                <span class="brand-copy">
+                    <strong>Wajiha Khan</strong>
+                    <span>Backend Engineer</span>
+                </span>
+            </a>
 
-<section id="about">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-grid">
-        <div class="about-card">
-            <h3>Who I am</h3>
-            <p>Senior Backend Engineer with 4+ years building high-throughput, fault-tolerant backend systems in fintech payments and enterprise SaaS. I specialise in Java 17+, Spring Boot, and distributed microservices — with production ownership of always-on transaction pipelines and scalable RESTful APIs at scale.</p>
-        </div>
-        <div class="about-card">
-            <h3>What I bring</h3>
-            <ul>
-                <li>Millions of card transactions processed daily</li>
-                <li>40% deployment time reduction via CI/CD automation</li>
-                <li>85%+ test coverage on critical payment flows</li>
-                <li>30% SQL throughput improvement at i2c</li>
-                <li>Oracle Certified Developer (2 certifications)</li>
-                <li>Outstanding Performer of the Year — i2c Inc.</li>
-            </ul>
-        </div>
-    </div>
-</section>
+            <button class="nav-toggle icon-button" type="button" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>
+                <span class="sr-only">Open navigation</span>
+                <span class="nav-toggle-lines" aria-hidden="true"></span>
+            </button>
 
-<section id="experience">
-    <h2 class="section-title">Experience</h2>
-    <div class="exp-card">
-        <div class="exp-header">
-            <div>
-                <div class="exp-title">Senior Software Engineer</div>
-                <div class="exp-company">GoSaaS Inc. &nbsp;·&nbsp; Enterprise SaaS · Oracle Fusion ERP</div>
+            <div class="nav-links" id="nav-links" data-nav-links>
+                <a href="#experience">Experience</a>
+                <a href="#work">Work</a>
+                <a href="#demos">Demos</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#credentials">Credentials</a>
+                <a class="nav-contact" href="#contact">Let’s talk</a>
             </div>
-            <span class="exp-date">Jan 2025 – Present</span>
-        </div>
-        <ul>
-            <li>Designed fault-tolerant ERP integrations with dynamic field mappings and real-time API synchronisation, with explicit focus on idempotency and error recovery under production load.</li>
-            <li>Architected Spring Batch schedulers for automated SOAP-based data extraction, transforming large volumes of unstructured XML into structured domain objects.</li>
-            <li>Automated Docker image builds and Kubernetes deployment pipelines, cutting deployment time by 40% and eliminating configuration drift across environments.</li>
-            <li>Achieved 85%+ test coverage on critical data flows via comprehensive JUnit and Mockito test suites.</li>
-            <li>Mentored junior engineers through structured code reviews, raising team engineering standards.</li>
-        </ul>
-    </div>
-    <div class="exp-card">
-        <div class="exp-header">
-            <div>
-                <div class="exp-title">Software Engineer</div>
-                <div class="exp-company">i2c Inc. &nbsp;·&nbsp; Fintech · Card Payments Processing</div>
-            </div>
-            <span class="exp-date">Jul 2022 – Jan 2025</span>
-        </div>
-        <ul>
-            <li>Owned 6+ critical financial schedulers end-to-end — CCPD, CCSG, Statement Adjustment, Dispute, Consumer Statement, and IVR — supporting monthly credit card statement generation across millions of transactions.</li>
-            <li>Designed high-concurrency Java/Spring Boot systems in a mission-critical, always-on environment with 99.9%+ uptime targets.</li>
-            <li>Optimised PostgreSQL query performance achieving ~30% throughput improvement while preserving transactional integrity.</li>
-            <li>Mentored 3 junior engineers and led code reviews, reducing PR cycle time by 25%.</li>
-        </ul>
-    </div>
-</section>
 
-<section id="projects">
-    <h2 class="section-title">Live Projects</h2>
-    <div class="projects-grid">
+            <button class="theme-toggle icon-button" type="button" aria-label="Switch color theme" data-theme-toggle>
+                <svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41"/></svg>
+                <svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.5 14.4A8.5 8.5 0 0 1 9.6 3.5 8.5 8.5 0 1 0 20.5 14.4Z"/></svg>
+            </button>
+        </nav>
+    </header>
 
-        <!-- Smart Job Scheduler -->
-        <div class="project-card featured">
-            <div class="project-header">
-                <div class="project-icon">🤖</div>
-                <div class="project-name">Smart Job Scheduler</div>
-                <div class="project-live"><i class="fas fa-circle" style="font-size:0.5rem"></i> Live in Production</div>
-                <div class="project-tech">Java 17 · Spring Boot 3 · Spring Batch · PostgreSQL · Docker · Kubernetes · Railway</div>
-            </div>
-            <div class="project-body">
-                <p>AI-powered job scheduling microservice that automatically scores and prioritises background jobs using a weighted multi-factor ML model. Every scheduling decision is fully explainable — no black box.</p>
-                <div class="project-metrics">
-                    <div class="metric"><div class="metric-val">0–100</div><div class="metric-label">AI priority score</div></div>
-                    <div class="metric"><div class="metric-val">5</div><div class="metric-label">scoring factors</div></div>
-                    <div class="metric"><div class="metric-val">30s</div><div class="metric-label">dispatch cycle</div></div>
-                    <div class="metric"><div class="metric-val">85%+</div><div class="metric-label">test coverage</div></div>
+    <main id="main-content">
+        <section class="hero shell" id="top">
+            <div class="hero-copy reveal">
+                <div class="availability"><span aria-hidden="true"></span> Open to senior backend opportunities</div>
+                <p class="eyebrow">Senior Backend Engineer · Java & Spring Boot</p>
+                <h1>I engineer backend systems that stay reliable under <em>real-world load.</em></h1>
+                <p class="hero-lede">Four years building payment workflows, distributed integrations, and data-intensive services—taking systems from design decisions through production ownership.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↘</span></a>
+                    <a class="button button-secondary" href="Wajiha_Khan_Resume.pdf" download="Wajiha_Khan_Resume.pdf">Download résumé <span aria-hidden="true">↓</span></a>
                 </div>
-                <p>Built with event-driven retry logic — failed jobs are re-scored with urgency boost and automatically re-queued.</p>
-            </div>
-            <div class="project-footer">
-                <a href="https://smart-job-scheduler-production.up.railway.app/swagger-ui/index.html" target="_blank" class="btn-sm live"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                <a href="https://github.com/wajihayousafzai1-debug/smart-job-scheduler" target="_blank" class="btn-sm"><i class="fab fa-github"></i> Source Code</a>
-                <a href="https://smart-job-scheduler-production.up.railway.app/api/v1/jobs/stats" target="_blank" class="btn-sm"><i class="fas fa-chart-bar"></i> Live Stats</a>
-            </div>
-        </div>
-
-        <!-- Sentiment Analyzer -->
-        <div class="project-card featured">
-            <div class="project-header">
-                <div class="project-icon">💬</div>
-                <div class="project-name">AI Sentiment Analyzer</div>
-                <div class="project-live"><i class="fas fa-circle" style="font-size:0.5rem"></i> Live in Production</div>
-                <div class="project-tech">Java 21 · Spring Boot 3.3 · Thymeleaf · Rule-Based AI · Maven · Railway</div>
-            </div>
-            <div class="project-body">
-                <p>Full-stack AI-powered sentiment analysis tool that classifies any text as Positive, Negative, or Neutral with confidence scoring. No external API dependency — fully self-contained, deterministic, and production-safe.</p>
-                <div class="project-metrics">
-                    <div class="metric"><div class="metric-val">3</div><div class="metric-label">sentiment classes</div></div>
-                    <div class="metric"><div class="metric-val">0%</div><div class="metric-label">API dependency</div></div>
-                    <div class="metric"><div class="metric-val">Real-time</div><div class="metric-label">analysis</div></div>
-                </div>
-                <!-- Inline demo -->
-                <div class="demo-box">
-                    <textarea id="demo-text" placeholder="Type any text and click Analyse...">I absolutely love working with Java and Spring Boot!</textarea>
-                    <button class="demo-btn" onclick="analyseSentiment()">✨ Analyse Sentiment</button>
-                    <div class="demo-result" id="demo-result"></div>
+                <div class="hero-meta" aria-label="Professional details">
+                    <span>Lahore, Pakistan</span>
+                    <span>Open to relocation</span>
+                    <span>UTC+5</span>
                 </div>
             </div>
-            <div class="project-footer">
-                <a href="https://sentiment-analyzer-production-395b.up.railway.app" target="_blank" class="btn-sm live" id="sentiment-live-btn" rel="noopener noreferrer" class="btn-sm live"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                <a href="https://github.com/wajihayousafzai1-debug/sentiment-analyzer" target="_blank" class="btn-sm" rel="noopener noreferrer"><i class="fab fa-github"></i> Source Code</a>
-            </div>
-        </div>
 
-        <!-- Approval Workflow -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon">⚙️</div>
-                <div class="project-name">Approval Workflow & Job Scheduling Portal</div>
-                <div class="project-tech">Spring Boot · Oracle JET · Knockout.js · PostgreSQL · Docker · Kubernetes · Oracle Cloud</div>
+            <aside class="system-card reveal" aria-label="Backend engineering profile">
+                <div class="system-card-head">
+                    <span>production-profile.yml</span>
+                    <span class="system-status"><i aria-hidden="true"></i> Operational</span>
+                </div>
+                <div class="system-code" aria-hidden="true">
+                    <p><span class="code-key">engineer:</span></p>
+                    <p class="indent"><span class="code-key">focus:</span> <span class="code-value">backend systems</span></p>
+                    <p class="indent"><span class="code-key">domain:</span> <span class="code-value">fintech + SaaS</span></p>
+                    <p class="indent"><span class="code-key">stack:</span></p>
+                    <p class="indent-2">- Java 17/21</p>
+                    <p class="indent-2">- Spring Boot</p>
+                    <p class="indent-2">- PostgreSQL</p>
+                    <p class="indent-2">- Docker / Kubernetes</p>
+                    <p class="indent"><span class="code-key">principles:</span></p>
+                    <p class="indent-2">- reliability</p>
+                    <p class="indent-2">- observability</p>
+                    <p class="indent-2">- measurable impact</p>
+                </div>
+                <div class="system-flow" aria-hidden="true">
+                    <span>request</span><b>→</b><span>validate</span><b>→</b><span>process</span><b>→</b><span>observe</span>
+                </div>
+            </aside>
+        </section>
+
+        <section class="impact-strip" aria-label="Career impact">
+            <div class="shell impact-grid">
+                <article><strong>4+</strong><span>years building production systems</span></article>
+                <article><strong>Millions</strong><span>of card transactions supported daily</span></article>
+                <article><strong>30%</strong><span>SQL throughput improvement</span></article>
+                <article><strong>40%</strong><span>faster deployment workflows</span></article>
             </div>
-            <div class="project-body">
-                <p>Modular, cloud-native approval and job scheduling platform on Oracle Cloud with real-time tracking, retry logic, and rollback mechanisms for data integrity across distributed job execution.</p>
-                <div class="project-metrics">
-                    <div class="metric"><div class="metric-val">60%</div><div class="metric-label">faster job execution</div></div>
-                    <div class="metric"><div class="metric-val">Oracle Cloud</div><div class="metric-label">platform</div></div>
+        </section>
+
+        <section class="section shell" id="experience">
+            <div class="section-heading reveal">
+                <div><p class="eyebrow">01 · Experience</p><h2>Production ownership, not just implementation.</h2></div>
+                <p>I work across design, delivery, operations, and mentorship—the full lifecycle required to keep important backend systems dependable.</p>
+            </div>
+
+            <div class="timeline">
+                <article class="role reveal">
+                    <div class="role-aside"><span>2025 — Present</span><i aria-hidden="true"></i></div>
+                    <div class="role-content">
+                        <div class="role-title"><div><h3>Senior Software Engineer</h3><p>GoSaaS Inc. · Enterprise SaaS</p></div><span>Oracle Fusion ERP</span></div>
+                        <p class="role-summary">Designing fault-tolerant integration and scheduling services for enterprise workflows, with ownership spanning API contracts, data transformation, deployment automation, and production recovery.</p>
+                        <ul class="role-scope" aria-label="Core responsibilities"><li>System design</li><li>Integration contracts</li><li>Production recovery</li><li>Mentoring</li></ul>
+                        <ul class="outcomes">
+                            <li><strong>40% faster deployments</strong><span>Automated Docker image builds and Kubernetes delivery pipelines while eliminating configuration drift.</span></li>
+                            <li><strong>85%+ critical-flow coverage</strong><span>Built focused JUnit and Mockito suites around integration and scheduler pipelines.</span></li>
+                            <li><strong>Resilient integrations</strong><span>Applied idempotency, dynamic field mapping, validation, and explicit failure recovery to high-frequency ERP data flows.</span></li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="role reveal">
+                    <div class="role-aside"><span>2022 — 2025</span><i aria-hidden="true"></i></div>
+                    <div class="role-content">
+                        <div class="role-title"><div><h3>Software Engineer</h3><p>i2c Inc. · Financial Technology</p></div><span>Card payments</span></div>
+                        <p class="role-summary">Owned critical Java services and financial schedulers supporting statement generation, settlements, reversals, disputes, and reporting in an always-on payments environment.</p>
+                        <ul class="role-scope" aria-label="Core responsibilities"><li>Transaction processing</li><li>Database performance</li><li>Incident ownership</li><li>Code review</li></ul>
+                        <ul class="outcomes">
+                            <li><strong>Millions of transactions daily</strong><span>Supported sensitive card-processing workflows with an emphasis on correctness, auditability, and transactional integrity.</span></li>
+                            <li><strong>~30% higher SQL throughput</strong><span>Optimized PostgreSQL queries and batch workflows under sustained production load.</span></li>
+                            <li><strong>25% shorter PR cycles</strong><span>Mentored three engineers and led systematic reviews that improved delivery flow and shared standards.</span></li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section work-section" id="work">
+            <div class="shell">
+                <div class="section-heading reveal">
+                    <div><p class="eyebrow">02 · Selected work</p><h2>Systems explained through decisions and trade-offs.</h2></div>
+                    <p>Selected projects demonstrate scheduling, persistence, API design, explainability, testing, and operational thinking.</p>
+                </div>
+
+                <div class="projects">
+                    <article class="project project-featured reveal">
+                        <div class="project-index">01</div>
+                        <div class="project-main">
+                            <div class="project-topline"><span class="project-type">Flagship backend system</span><span class="project-state project-state--ready"><i></i> Deployment ready</span></div>
+                            <h3>Smart Job Scheduler</h3>
+                            <p>A database-backed scheduling service designed around a hard distributed-systems problem: ensuring competing application instances cannot execute the same claim while still recovering work abandoned by a failed worker.</p>
+                            <div class="architecture" aria-label="System flow">
+                                <span>REST API</span><b>→</b><span>Priority policy</span><b>→</b><span>Locked claim</span><b>→</b><span>Handler registry</span><b>→</b><span>State commit</span>
+                            </div>
+                            <div class="project-details">
+                                <div><span>Architecture decision</span><p>Short <code>REQUIRES_NEW</code> transactions lock and claim rows; pluggable handlers execute after the transaction closes; completion reacquires the lock and verifies ownership.</p></div>
+                                <div><span>Reliability model</span><p>Optimistic versioning, pessimistic claim locks, expiring leases, opaque claim tokens, bounded retries, and exponential backoff protect each lifecycle transition.</p></div>
+                                <div><span>Trade-off</span><p>The safety-first claim query can make competing dispatchers wait briefly on locked rows. It favors correctness and portability; PostgreSQL <code>SKIP LOCKED</code> is the next throughput optimization.</p></div>
+                                <div><span>Verification & delivery</span><p>18 passing tests cover concurrency and lifecycle invariants. Flyway migrations, environment-specific profiles, a multi-stage Docker image, and PostgreSQL configuration make releases reproducible.</p></div>
+                            </div>
+                            <div class="tech-list"><span>Java 17</span><span>Spring Boot</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>Flyway</span><span>Docker</span><span>OpenAPI</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/wajihayousafzai1-debug/smart-job-scheduler" target="_blank" rel="noopener noreferrer">Source code <span>↗</span></a>
+                                <a href="#demos">Deployment details <span>↓</span></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project reveal">
+                        <div class="project-index">02</div>
+                        <div class="project-main">
+                            <div class="project-topline"><span class="project-type">Explainable text analysis</span><span class="project-state project-state--ready"><i></i> Deployment ready</span></div>
+                            <h3>Sentiment Analysis Service</h3>
+                            <p>A deterministic lexical analysis service that deliberately prioritizes explainability, predictable latency, and zero external inference cost over the broader language understanding of a trained model.</p>
+                            <div class="architecture" aria-label="System flow">
+                                <span>Thymeleaf / REST</span><b>→</b><span>Tokenizer</span><b>→</b><span>Lexicon</span><b>→</b><span>Signal scorer</span><b>→</b><span>Explanation</span>
+                            </div>
+                            <div class="project-details">
+                                <div><span>Architecture decision</span><p>Tokenization, lexicon ownership, contextual scoring, and explanation are separate components behind one application service, keeping both the server-rendered UI and versioned REST API consistent.</p></div>
+                                <div><span>Language handling</span><p>Code-point-safe emoji matching and boundary-aware word detection prevent surrogate-pair corruption and substring false positives; negators and amplifiers adjust nearby signals.</p></div>
+                                <div><span>Trade-off</span><p>Lexical rules are fast, inspectable, and locally executable, but cannot fully model sarcasm or domain-specific nuance. Explanations make that limitation visible rather than hiding uncertainty.</p></div>
+                                <div><span>Verification & API</span><p>14 passing unit and integration tests protect scoring and HTTP contracts. Structured DTOs, validation errors, OpenAPI documentation, and Docker packaging provide a production-shaped boundary.</p></div>
+                            </div>
+                            <div class="tech-list"><span>Java 21</span><span>Spring Boot</span><span>REST API</span><span>OpenAPI</span><span>Thymeleaf</span><span>Docker</span></div>
+                            <div class="project-links">
+                                <a href="https://github.com/wajihayousafzai1-debug/sentiment-analyzer" target="_blank" rel="noopener noreferrer">Source code <span>↗</span></a>
+                                <a href="#demos">Deployment details <span>↓</span></a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project project-private reveal">
+                        <div class="project-index">03</div>
+                        <div class="project-main">
+                            <div class="project-topline"><span class="project-type">Enterprise platform</span><span class="private-label">Proprietary</span></div>
+                            <h3>Approval & Scheduling Platform</h3>
+                            <p>A modular Oracle Cloud platform for approval workflows and distributed job execution, with real-time tracking, retry handling, and rollback mechanisms protecting data integrity.</p>
+                            <div class="project-details">
+                                <div><span>Outcome</span><p>Reduced job-execution delays by 60% through workflow and component-level optimization.</p></div>
+                                <div><span>Architecture</span><p>Separated approval orchestration from distributed execution so each workflow could scale, retry, and evolve independently.</p></div>
+                                <div><span>Reliability</span><p>Real-time status tracking, bounded retries, rollback paths, and explicit recovery behavior protected cross-system data integrity.</p></div>
+                                <div><span>Ownership</span><p>Covered backend services, enterprise contracts, deployment, incident recovery, and coordination across product surfaces.</p></div>
+                            </div>
+                            <div class="tech-list"><span>Spring Boot</span><span>PostgreSQL</span><span>Docker</span><span>Kubernetes</span><span>Oracle Cloud</span></div>
+                        </div>
+                    </article>
                 </div>
             </div>
-            <div class="project-footer">
-                <span class="btn-sm" style="color:#64748b;cursor:default"><i class="fas fa-lock"></i> Proprietary — GoSaaS Inc.</span>
-            </div>
-        </div>
+        </section>
 
-        <!-- Final Year Project -->
-        <div class="project-card">
-            <div class="project-header">
-                <div class="project-icon">🧠</div>
-                <div class="project-name">Intelligent Data Classification System</div>
-                <div class="project-tech">Java · Spring Boot · Quartz Scheduler · REST APIs · Oracle SQL · Jenkins</div>
+        <section class="section shell demo-section" id="demos">
+            <div class="section-heading reveal">
+                <div><p class="eyebrow">03 · Live demos</p><h2>Production-shaped services, ready for Render.</h2></div>
+                <p>Both images and health checks are ready. These placeholders will become public links after the first Render deployment.</p>
             </div>
-            <div class="project-body">
-                <p>ML-powered pipeline to automatically classify unstructured datasets at scale, comparing rule-based and learning-based approaches. Full end-to-end architecture from data ingestion through model evaluation.</p>
-                <div class="project-metrics">
-                    <div class="metric"><div class="metric-val">Final Year</div><div class="metric-label">PUCIT project</div></div>
-                    <div class="metric"><div class="metric-val">ML Pipeline</div><div class="metric-label">end-to-end</div></div>
+
+            <div class="demo-grid">
+                <article class="demo-card reveal">
+                    <div class="demo-card-head"><span>Scheduler API</span><span class="demo-status"><i></i> Awaiting URL</span></div>
+                    <h3>Smart Job Scheduler</h3>
+                    <p>Inspect the OpenAPI contract, submit jobs, and observe their lock-safe lifecycle through the REST API.</p>
+                    <code class="demo-url">https://smart-job-scheduler-&lt;service&gt;.onrender.com/swagger-ui.html</code>
+                </article>
+                <article class="demo-card reveal">
+                    <div class="demo-card-head"><span>Web UI + REST API</span><span class="demo-status"><i></i> Awaiting URL</span></div>
+                    <h3>Sentiment Analysis Service</h3>
+                    <p>Try the Thymeleaf interface or explore the versioned analysis endpoint through Swagger UI.</p>
+                    <code class="demo-url">https://sentiment-analyzer-&lt;service&gt;.onrender.com/</code>
+                </article>
+            </div>
+            <p class="demo-note reveal">After deployment, replace each placeholder with its Render hostname. Sentiment API documentation will be available at <code>/swagger-ui.html</code>.</p>
+            <aside class="demo-advisory reveal" aria-label="Demo environment limitation">
+                <span>Demo environment</span>
+                <p>Free Render instances may cold start. Scheduler jobs remain persisted in PostgreSQL, but dispatch pauses while the service sleeps and resumes after it wakes.</p>
+            </aside>
+        </section>
+
+        <section class="section shell" id="expertise">
+            <div class="section-heading reveal">
+                <div><p class="eyebrow">04 · Expertise</p><h2>Depth where backend systems demand it.</h2></div>
+                <p>Grouped by the work I use these technologies to accomplish—not a wall of disconnected logos.</p>
+            </div>
+
+            <div class="expertise-grid">
+                <article class="expertise-card expertise-card--primary reveal"><span class="expertise-number">Core discipline</span><h3>Backend architecture</h3><p>Designing Java services around clear boundaries, durable contracts, transactional correctness, and operationally understandable failure modes.</p><ul><li>Java 17/21</li><li>Spring Boot & Batch</li><li>REST, SOAP & Webhooks</li><li>Hibernate / JPA</li><li>Distributed workflows</li></ul></article>
+                <article class="expertise-card reveal"><span class="expertise-number">01</span><h3>Data & transactions</h3><p>Protecting integrity and throughput across financial, batch, and reporting workloads.</p><ul><li>PostgreSQL & Oracle</li><li>Query plans & indexing</li><li>Transaction boundaries</li><li>Batch optimization</li></ul></article>
+                <article class="expertise-card reveal"><span class="expertise-number">02</span><h3>Reliability & integration</h3><p>Designing for partial failure across synchronous and asynchronous system boundaries.</p><ul><li>Kafka & RabbitMQ</li><li>Idempotency</li><li>Retries & backoff</li><li>Auditability</li></ul></article>
+                <article class="expertise-card reveal"><span class="expertise-number">03</span><h3>Platform & delivery</h3><p>Making services repeatable to build, deploy, observe, and recover in production.</p><ul><li>Docker & Kubernetes</li><li>Jenkins & Azure DevOps</li><li>Oracle Cloud</li><li>CI/CD automation</li></ul></article>
+                <article class="expertise-card reveal"><span class="expertise-number">04</span><h3>Quality & leadership</h3><p>Raising engineering quality through focused verification, review, and shared technical context.</p><ul><li>JUnit & Mockito</li><li>Integration testing</li><li>Architecture review</li><li>Technical mentoring</li></ul></article>
+            </div>
+        </section>
+
+        <section class="section credentials-section" id="credentials">
+            <div class="shell credentials-grid">
+                <div class="section-heading compact reveal"><div><p class="eyebrow">05 · Credentials</p><h2>Continuous learning, applied in practice.</h2></div></div>
+                <div class="credentials-list">
+                    <article class="credential reveal"><span>2025</span><div><h3>Oracle Redwood Application Developer Associate</h3><p>Oracle · 1Z0-1114-25</p></div></article>
+                    <article class="credential reveal"><span>2025</span><div><h3>Oracle Fusion AI Agent Studio Foundations Associate</h3><p>Oracle · 98% score</p></div></article>
+                    <article class="credential reveal"><span>2023</span><div><h3>Outstanding Performer of the Year</h3><p>i2c Inc.</p></div></article>
+                    <article class="credential reveal"><span>2022</span><div><h3>BS Computer Science</h3><p>Punjab University College of Information Technology, Lahore</p></div></article>
                 </div>
             </div>
-            <div class="project-footer">
-                <span class="btn-sm" style="color:#64748b;cursor:default"><i class="fas fa-university"></i> Academic Project</span>
+        </section>
+
+        <section class="contact-section" id="contact">
+            <div class="shell contact-grid reveal">
+                <div>
+                    <p class="eyebrow">06 · Contact</p>
+                    <h2>Have a backend problem worth solving?</h2>
+                </div>
+                <div class="contact-copy">
+                    <p>I’m interested in senior backend roles where reliability, system design, and ownership matter. If that sounds like your team, let’s talk.</p>
+                    <a class="button button-light" href="mailto:wajihayousafzai1@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
+                </div>
             </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell footer-grid">
+            <div><strong>Wajiha Khan</strong><span>Senior Backend Engineer</span></div>
+            <div class="footer-links"><a href="mailto:wajihayousafzai1@gmail.com">Email</a><a href="https://linkedin.com/in/wajiha-yousafzai" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/wajihayousafzai1-debug" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+            <p>© <span data-year>2026</span> · Built with semantic HTML, modern CSS, and vanilla JavaScript.</p>
         </div>
-    </div>
-</section>
-
-<section id="skills">
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-group">
-        <h3>Languages & Frameworks</h3>
-        <div class="skills-wrap">
-            <span class="skill-tag highlight">Java 17/21</span><span class="skill-tag highlight">Spring Boot 3.x</span><span class="skill-tag highlight">Spring Batch</span><span class="skill-tag highlight">Spring Reactor</span><span class="skill-tag">Hibernate</span><span class="skill-tag">Python</span><span class="skill-tag">JavaScript</span><span class="skill-tag">React.js</span><span class="skill-tag">Groovy</span>
-        </div>
-    </div>
-    <div class="skills-group">
-        <h3>Backend & APIs</h3>
-        <div class="skills-wrap">
-            <span class="skill-tag highlight">Microservices</span><span class="skill-tag highlight">RESTful APIs</span><span class="skill-tag highlight">Apache Kafka</span><span class="skill-tag highlight">RabbitMQ</span><span class="skill-tag">SOAP</span><span class="skill-tag">Event-Driven Architecture</span><span class="skill-tag">JWT</span><span class="skill-tag">Distributed Systems</span>
-        </div>
-    </div>
-    <div class="skills-group">
-        <h3>Cloud & DevOps</h3>
-        <div class="skills-wrap">
-            <span class="skill-tag highlight">Docker</span><span class="skill-tag highlight">Kubernetes</span><span class="skill-tag highlight">AWS</span><span class="skill-tag">Jenkins</span><span class="skill-tag">CI/CD Pipelines</span><span class="skill-tag">Helm</span><span class="skill-tag">Terraform</span><span class="skill-tag">Azure DevOps</span><span class="skill-tag">Oracle Cloud</span>
-        </div>
-    </div>
-    <div class="skills-group">
-        <h3>Databases</h3>
-        <div class="skills-wrap">
-            <span class="skill-tag highlight">PostgreSQL</span><span class="skill-tag highlight">Oracle SQL</span><span class="skill-tag">MongoDB</span><span class="skill-tag">MySQL</span><span class="skill-tag">Informix</span>
-        </div>
-    </div>
-    <div class="skills-group">
-        <h3>Certifications</h3>
-        <div class="skills-wrap">
-            <span class="skill-tag highlight">Oracle Redwood Developer Associate (Oct 2025)</span>
-            <span class="skill-tag highlight">Oracle Fusion AI Agent Studio — 98% Score (Jun 2025)</span>
-            <span class="skill-tag">Outstanding Performer of the Year — i2c Inc.</span>
-        </div>
-    </div>
-</section>
-
-<section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <div class="contact-grid">
-        <a href="mailto:wajihayousafzai1@gmail.com" class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <div><div class="contact-label">Email</div><div class="contact-val">wajihayousafzai1@gmail.com</div></div>
-        </a>
-        <a href="tel:+923335441207" class="contact-item">
-            <i class="fas fa-phone"></i>
-            <div><div class="contact-label">Phone</div><div class="contact-val">+92 333 544 1207</div></div>
-        </a>
-        <a href="https://linkedin.com/in/wajiha-yousafzai" target="_blank" class="contact-item">
-            <i class="fab fa-linkedin"></i>
-            <div><div class="contact-label">LinkedIn</div><div class="contact-val">wajiha-yousafzai</div></div>
-        </a>
-        <a href="https://github.com/wajihayousafzai1-debug" target="_blank" class="contact-item">
-            <i class="fab fa-github"></i>
-            <div><div class="contact-label">GitHub</div><div class="contact-val">wajihayousafzai1-debug</div></div>
-        </a>
-    </div>
-</section>
-
-<footer>
-    <p>© 2026 Wajiha Khan &nbsp;·&nbsp; Senior Backend Software Engineer &nbsp;·&nbsp; <a href="https://linkedin.com/in/wajiha-yousafzai">LinkedIn</a> &nbsp;·&nbsp; <a href="https://github.com/wajihayousafzai1-debug">GitHub</a></p>
-</footer>
-
-<script>
-// Inline sentiment demo — rule-based, mirrors your Java engine logic
-function analyseSentiment() {
-    const text = document.getElementById('demo-text').value.trim();
-    if (!text) return;
-
-    const positive = ['love','great','excellent','amazing','awesome','good','fantastic','happy','wonderful','best','brilliant','perfect','enjoy','beautiful','outstanding','superb'];
-    const negative = ['hate','terrible','awful','bad','horrible','worst','disappointing','ugly','boring','dreadful','poor','useless','broken','failed','error','wrong'];
-
-    const lower = text.toLowerCase();
-    let posScore = 0, negScore = 0;
-    positive.forEach(w => { if (lower.includes(w)) posScore++; });
-    negative.forEach(w => { if (lower.includes(w)) negScore++; });
-
-    let sentiment, emoji, color, confidence;
-    if (posScore > negScore) {
-        sentiment = 'Positive'; emoji = '😊'; color = '#4ade80';
-        confidence = Math.min(95, 60 + posScore * 10);
-    } else if (negScore > posScore) {
-        sentiment = 'Negative'; emoji = '😞'; color = '#f87171';
-        confidence = Math.min(95, 60 + negScore * 10);
-    } else {
-        sentiment = 'Neutral'; emoji = '😐'; color = '#fbbf24';
-        confidence = 55;
-    }
-
-    const result = document.getElementById('demo-result');
-    result.style.display = 'block';
-    result.innerHTML = `<span style="color:${color};font-weight:600">${emoji} ${sentiment}</span> &nbsp;·&nbsp; <span style="color:#64748b">Confidence: ${confidence}%</span><br><span style="color:#475569;font-size:0.8rem">Rule-based AI · ${posScore} positive signals · ${negScore} negative signals detected</span>`;
-}
-</script>
+    </footer>
 </body>
 </html>
