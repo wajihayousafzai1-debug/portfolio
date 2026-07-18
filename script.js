@@ -88,26 +88,6 @@ if (reducedMotion.matches || !('IntersectionObserver' in window)) {
     revealItems.forEach((item) => revealObserver.observe(item));
 }
 
-const navigationAnchors = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-const sections = navigationAnchors
-    .map((link) => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-if ('IntersectionObserver' in window) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            navigationAnchors.forEach((link) => {
-                const isCurrent = link.getAttribute('href') === '#' + entry.target.id;
-                if (isCurrent) link.setAttribute('aria-current', 'true');
-                else link.removeAttribute('aria-current');
-            });
-        });
-    }, { rootMargin: '-35% 0px -55%', threshold: 0 });
-
-    sections.forEach((section) => sectionObserver.observe(section));
-}
-
 const currentPage = document.body.dataset.page;
 if (currentPage) {
     document.querySelector(`.nav-links [data-page="${currentPage}"]`)?.setAttribute('aria-current', 'page');
