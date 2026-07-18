@@ -27,12 +27,16 @@ themeToggle?.addEventListener('click', () => {
 function closeNavigation() {
     navLinks?.classList.remove('is-open');
     navToggle?.setAttribute('aria-expanded', 'false');
+    navToggle?.setAttribute('aria-label', 'Open navigation');
+    document.body.classList.remove('menu-open');
 }
 
 navToggle?.addEventListener('click', () => {
     const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!isOpen));
+    navToggle.setAttribute('aria-label', isOpen ? 'Open navigation' : 'Close navigation');
     navLinks?.classList.toggle('is-open', !isOpen);
+    document.body.classList.toggle('menu-open', !isOpen);
 });
 
 navLinks?.querySelectorAll('a').forEach((link) => {
@@ -57,7 +61,7 @@ function updateHeader() {
     header?.classList.toggle('is-scrolled', currentScrollY > 16);
     header?.classList.toggle(
         'is-hidden',
-        currentScrollY > previousScrollY && currentScrollY > 240 && !navLinks?.classList.contains('is-open')
+        window.innerWidth > 960 && currentScrollY > previousScrollY && currentScrollY > 240 && !navLinks?.classList.contains('is-open')
     );
     previousScrollY = currentScrollY;
     scrollFrame = undefined;
@@ -102,6 +106,11 @@ if ('IntersectionObserver' in window) {
     }, { rootMargin: '-35% 0px -55%', threshold: 0 });
 
     sections.forEach((section) => sectionObserver.observe(section));
+}
+
+const currentPage = document.body.dataset.page;
+if (currentPage) {
+    document.querySelector(`.nav-links [data-page="${currentPage}"]`)?.setAttribute('aria-current', 'page');
 }
 
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
