@@ -171,7 +171,7 @@
                     <article class="project project-featured reveal">
                         <div class="project-index">01</div>
                         <div class="project-main">
-                            <div class="project-topline"><span class="project-type">Flagship backend system</span><span class="project-state project-state--ready"><i></i> Deployment ready</span></div>
+                            <div class="project-topline"><span class="project-type">Flagship backend system</span><span class="project-state"><i></i> Live API</span></div>
                             <h3>Smart Job Scheduler</h3>
                             <p>A database-backed scheduling service designed around a hard distributed-systems problem: ensuring competing application instances cannot execute the same claim while still recovering work abandoned by a failed worker.</p>
                             <div class="architecture" aria-label="System flow">
@@ -186,7 +186,7 @@
                             <div class="tech-list"><span>Java 17</span><span>Spring Boot</span><span>Spring Data JPA</span><span>PostgreSQL</span><span>Flyway</span><span>Docker</span><span>OpenAPI</span></div>
                             <div class="project-links">
                                 <a href="https://github.com/wajihayousafzai1-debug/smart-job-scheduler" target="_blank" rel="noopener noreferrer">Source code <span>↗</span></a>
-                                <a href="#demos">Deployment details <span>↓</span></a>
+                                <a href="https://smart-job-scheduler.onrender.com/swagger-ui.html" target="_blank" rel="noopener noreferrer">Explore API <span>↗</span></a>
                             </div>
                         </div>
                     </article>
@@ -194,7 +194,7 @@
                     <article class="project reveal">
                         <div class="project-index">02</div>
                         <div class="project-main">
-                            <div class="project-topline"><span class="project-type">Explainable text analysis</span><span class="project-state project-state--ready"><i></i> Deployment ready</span></div>
+                            <div class="project-topline"><span class="project-type">Explainable text analysis</span><span class="project-state"><i></i> Live demo</span></div>
                             <h3>Sentiment Analysis Service</h3>
                             <p>A deterministic lexical analysis service that deliberately prioritizes explainability, predictable latency, and zero external inference cost over the broader language understanding of a trained model.</p>
                             <div class="architecture" aria-label="System flow">
@@ -204,12 +204,12 @@
                                 <div><span>Architecture decision</span><p>Tokenization, lexicon ownership, contextual scoring, and explanation are separate components behind one application service, keeping both the server-rendered UI and versioned REST API consistent.</p></div>
                                 <div><span>Language handling</span><p>Code-point-safe emoji matching and boundary-aware word detection prevent surrogate-pair corruption and substring false positives; negators and amplifiers adjust nearby signals.</p></div>
                                 <div><span>Trade-off</span><p>Lexical rules are fast, inspectable, and locally executable, but cannot fully model sarcasm or domain-specific nuance. Explanations make that limitation visible rather than hiding uncertainty.</p></div>
-                                <div><span>Verification & API</span><p>14 passing unit and integration tests protect scoring and HTTP contracts. Structured DTOs, validation errors, OpenAPI documentation, and Docker packaging provide a production-shaped boundary.</p></div>
+                                <div><span>Verification & API</span><p>21 passing unit and integration tests protect scoring, contextual safety signals, and HTTP contracts. Structured DTOs, validation errors, OpenAPI documentation, and Docker packaging provide a production-shaped boundary.</p></div>
                             </div>
                             <div class="tech-list"><span>Java 21</span><span>Spring Boot</span><span>REST API</span><span>OpenAPI</span><span>Thymeleaf</span><span>Docker</span></div>
                             <div class="project-links">
                                 <a href="https://github.com/wajihayousafzai1-debug/sentiment-analyzer" target="_blank" rel="noopener noreferrer">Source code <span>↗</span></a>
-                                <a href="#demos">Deployment details <span>↓</span></a>
+                                <a href="https://sentiment-analyzer-votg.onrender.com/" target="_blank" rel="noopener noreferrer">Live demo <span>↗</span></a>
                             </div>
                         </div>
                     </article>
@@ -235,25 +235,25 @@
 
         <section class="section shell demo-section" id="demos">
             <div class="section-heading reveal">
-                <div><p class="eyebrow">03 · Live demos</p><h2>Production-shaped services, ready for Render.</h2></div>
-                <p>Both images and health checks are ready. These placeholders will become public links after the first Render deployment.</p>
+                <div><p class="eyebrow">03 · Live demos</p><h2>Production-shaped services, running on Render.</h2></div>
+                <p>Explore the deployed interfaces and API contracts. Both services expose dedicated health checks and containerized release workflows.</p>
             </div>
 
             <div class="demo-grid">
                 <article class="demo-card reveal">
-                    <div class="demo-card-head"><span>Scheduler API</span><span class="demo-status"><i></i> Awaiting URL</span></div>
+                    <div class="demo-card-head"><span>Scheduler API</span><span class="demo-status demo-status--live"><i></i> Live</span></div>
                     <h3>Smart Job Scheduler</h3>
                     <p>Inspect the OpenAPI contract, submit jobs, and observe their lock-safe lifecycle through the REST API.</p>
-                    <code class="demo-url">https://smart-job-scheduler-&lt;service&gt;.onrender.com/swagger-ui.html</code>
+                    <a class="demo-url" href="https://smart-job-scheduler.onrender.com/swagger-ui.html" target="_blank" rel="noopener noreferrer">Explore Swagger UI <span>↗</span></a>
                 </article>
                 <article class="demo-card reveal">
-                    <div class="demo-card-head"><span>Web UI + REST API</span><span class="demo-status"><i></i> Awaiting URL</span></div>
+                    <div class="demo-card-head"><span>Web UI + REST API</span><span class="demo-status demo-status--live"><i></i> Live</span></div>
                     <h3>Sentiment Analysis Service</h3>
                     <p>Try the Thymeleaf interface or explore the versioned analysis endpoint through Swagger UI.</p>
-                    <code class="demo-url">https://sentiment-analyzer-&lt;service&gt;.onrender.com/</code>
+                    <a class="demo-url" href="https://sentiment-analyzer-votg.onrender.com/" target="_blank" rel="noopener noreferrer">Open live interface <span>↗</span></a>
                 </article>
             </div>
-            <p class="demo-note reveal">After deployment, replace each placeholder with its Render hostname. Sentiment API documentation will be available at <code>/swagger-ui.html</code>.</p>
+            <p class="demo-note reveal">API documentation: <a href="https://smart-job-scheduler.onrender.com/swagger-ui.html" target="_blank" rel="noopener noreferrer">Scheduler Swagger</a> · <a href="https://sentiment-analyzer-votg.onrender.com/swagger-ui.html" target="_blank" rel="noopener noreferrer">Sentiment Swagger</a></p>
             <aside class="demo-advisory reveal" aria-label="Demo environment limitation">
                 <span>Demo environment</span>
                 <p>Free Render instances may cold start. Scheduler jobs remain persisted in PostgreSQL, but dispatch pauses while the service sleeps and resumes after it wakes.</p>
